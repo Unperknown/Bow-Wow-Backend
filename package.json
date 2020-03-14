@@ -6,10 +6,15 @@
   "author": "Unperknown <wnsdud105@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@types/koa": "^2.11.2",
+    "@koa/cors": "^3.0.0",
+    "@types/koa-router": "^7.4.0",
+    "@types/mongoose": "^5.7.6",
+    "apollo-server-koa": "^2.11.0",
     "dotenv": "^8.2.0",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
+    "koa-router": "^8.0.8",
+    "mongoose": "^5.9.4",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.3"
   },
