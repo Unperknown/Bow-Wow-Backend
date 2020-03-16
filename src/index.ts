@@ -21,6 +21,7 @@ mongoose.connect(process.env.MONGODB_URI || '', {
 });
 
 const app = new Koa();
+const router = new Router();
 const server = new ApolloServer({
 
 });
@@ -28,7 +29,9 @@ const server = new ApolloServer({
 server.applyMiddleware({ app });
 
 app.use(cors())
-  .use(koaBody());
+  .use(koaBody())
+  .use(router.routes())
+  .use(router.allowedMethods());
 
 app.listen(process.env.PORT || 8080, () => {
   console.log(`Server started at port ${process.env.PORT}`);
