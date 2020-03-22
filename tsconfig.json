@@ -5,10 +5,16 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "outDir": "./dist",
+    "baseUrl": "./src",
     "sourceMap": true,
-    "typeRoots": ["/node_modules/@types", "/@types"]
+    "typeRoots": ["/node_modules/@types", "/@types"],
+    "pretty": true
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*",
+    "./test/*"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
