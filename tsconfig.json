@@ -5,7 +5,10 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "outDir": "./dist",
-    "baseUrl": "./src",
+    "baseUrl": ".",
+    "paths" : {
+      "*": ["*", "src/*"]
+    },
     "sourceMap": true,
     "typeRoots": ["/node_modules/@types", "/@types"],
     "pretty": true

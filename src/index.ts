@@ -15,7 +15,7 @@ import { resolvers } from './resolvers';
 
 import { errorHandling } from './middlewares';
 
-mongoose.connect(process.env.MONGODB_URI || '', {
+mongoose.connect(process.env.MONGODB_URI, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -42,7 +42,7 @@ app.use(errorHandling)
   .use(router.allowedMethods());
 
 app.listen(process.env.PORT, () => {
-  console.log(`Server started at port ${process.env.PORT}`);
+  console.log(`Server started with graphQL at http://localhost:${process.env.PORT}/graphql`);
 });
 
 app.on('error', (err: Error) => {
