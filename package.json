@@ -10,11 +10,14 @@
     "@types/koa-morgan": "^1.0.4",
     "@types/koa-router": "^7.4.0",
     "@types/mongoose": "^5.7.6",
+    "@types/supertest": "^2.0.8",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
     "eslint": "^6.8.0",
     "jest": "^25.1.0",
-    "prettier": "^2.0.1"
+    "prettier": "^2.0.1",
+    "supertest": "^4.0.2",
+    "ts-jest": "^25.2.1"
   },
   "dependencies": {
     "@koa/cors": "^3.0.0",
@@ -31,7 +34,27 @@
   "scripts": {
     "start": "tsc && cross-env NODE_ENV=production node dist/bin/www.js",
     "build": "tsc -p tsconfig.json",
+    "test": "jest --watch",
     "dev": "nodemon --watch 'src/**/*' -e ts,tsx --exec ts-node ./src/index.ts",
     "lint": "eslint --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\""
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "\\.spec|.test\\.ts$",
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ],
+    "globals": {
+      "ts-jest": {
+        "diagnostics": {
+          "warnOnly": true
+        }
+      }
+    },
+    "preset": "ts-jest",
+    "testMatch": null
   }
 }
