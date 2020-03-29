@@ -1,20 +1,19 @@
 import { gql } from 'apollo-server-koa';
 
-const userType = gql`
-  type User {
+const hospitalType = gql`
+  type Hospital {
     id: String
     name: String
-    profile: String
+    location: String
   }
 
-  input UserInput {
+  input HospitalInput {
     id: String
     name: String
-    password: String
-    profile: String
+    location: String
   }
 `;
 
 export {
-  userType,
+  hospitalType,
 };

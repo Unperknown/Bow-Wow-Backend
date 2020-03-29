@@ -1,20 +1,17 @@
 import { gql } from 'apollo-server-koa';
 
-const userType = gql`
-  type User {
-    id: String
+const petType = gql`
+  type Pet {
     name: String
     profile: String
   }
 
-  input UserInput {
-    id: String
+  input PetInput {
     name: String
-    password: String
     profile: String
   }
 `;
 
 export {
-  userType,
+  petType,
 };
