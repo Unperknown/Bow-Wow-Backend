@@ -1,18 +1,18 @@
 const petResolvers = {
   Query: {
     pets: async (_: any, { userID }: any) => {
-      return [{}]
+      return [{}];
     }
   },
   Mutation: {
     addPet: async (_: any, pet: any) => {
-      return pet
+      return pet;
     },
     updatePet: async (_: any, pet: any) => {
-      return pet
+      return pet;
     },
     deletePet: async (_: any, id: String) => {
-      return id
+      return id;
     }
   }
 };

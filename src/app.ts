@@ -7,23 +7,11 @@ import * as koaBody from 'koa-bodyparser';
 import * as cors from '@koa/cors';
 import * as morgan from 'koa-morgan';
 
-import * as mongoose from 'mongoose';
-
 import { ApolloServer } from 'apollo-server-koa';
 import { typeDefs } from './typeDefs';
 import { resolvers } from './resolvers';
 
 import { errorHandling } from './middlewares';
-
-mongoose.connect(process.env.MONGODB_URI, {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(response => {
-  console.log('Successfully connected to MongoDB');
-}).catch(e => {
-  console.error(e);
-});
 
 const app = new Koa();
 const router = new Router();

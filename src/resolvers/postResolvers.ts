@@ -1,21 +1,21 @@
 const postResolvers = {
   Query: {
     post: async (_: any, { id }: any) => {
-      return id
+      return id;
     },
     posts: async () => {
-      return [{}]
+      return [{}];
     }
   },
   Mutation: {
     addPost: async (_: any, post: any) => {
-      return post
+      return post;
     },
     updatePost: async (_: any, post: any) => {
-      return post
+      return post;
     },
     deletePost: async (_: any, id: String) => {
-      return id
+      return id;
     }
   }
 };
