@@ -6,13 +6,9 @@ const userResolvers = {
     users: async () => await user.find({})
   },
   Mutation: {
-    addUser: async (_: any, _user: any) => await user.insert(_user),
-    updateUser: async (_: any, _user: any) => {
-      return _user;
-    },
-    deleteUser: async (_: any, id: String) => {
-      return id;
-    }
+    addUser: async (_: any, { _user }: any) => await user.insert(_user),
+    updateUser: async (_: any, { id, _user }: any) => await user.update(id, _user),
+    deleteUser: async (_: any, { id }: any) => await user.delete(id)
   }
 };
 
