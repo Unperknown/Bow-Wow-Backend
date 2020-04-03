@@ -1,4 +1,4 @@
 # 📈 Daily Progress
 
 ## Development II
-### 3/25 - 준비
+### 3/31 ~ 4/2 - GraphQL & Mocha 설정
