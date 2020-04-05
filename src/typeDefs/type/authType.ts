@@ -7,4 +7,6 @@ const authType = gql`
   }
 `;
 
-export { authType };
+export {
+  authType,
+};
