@@ -10,5 +10,8 @@ export class Pet {
   name: string;
 
   @Column()
+  userID: string;
+
+  @Column()
   profile: string;
 }

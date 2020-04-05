@@ -10,5 +10,8 @@ export class User {
   name: string;
 
   @Column()
+  roles: string;
+
+  @Column()
   profile: string;
 }
