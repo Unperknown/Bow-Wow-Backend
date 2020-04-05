@@ -4,13 +4,15 @@ const userType = gql`
   type User {
     id: String
     name: String
+    roles: String
     profile: String
   }
 
   input UserInput {
     id: String
-    name: String
     password: String
+    name: String
+    roles: String
     profile: String
   }
 `;

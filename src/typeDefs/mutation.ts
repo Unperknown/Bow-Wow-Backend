@@ -17,6 +17,9 @@ const mutation = gql`
     addHospital(hospital: HospitalInput): Hospital
     updateHospital(id: String, hospital: HospitalInput): Hospital
     deleteHospital(id: String): Hospital
+
+    signup(user: UserInput): AuthPayload
+    login(id: String!, password: String!): AuthPayload   
   }
 `;
 
