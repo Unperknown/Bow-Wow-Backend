@@ -7,8 +7,8 @@ const authResolvers = {
       return <any>[];
     }
   }
-}
+};
 
 export {
   authResolvers,
-}
+};

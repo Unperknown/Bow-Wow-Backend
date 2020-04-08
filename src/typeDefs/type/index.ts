@@ -9,5 +9,5 @@ export {
   petType,
   postType,
   hospitalType,
-  authType
+  authType,
 };

@@ -11,4 +11,4 @@ export const getUserID = async (ctx: Context, next: Next) => {
   const userID = jwt.verify(token, APP_SECRET);
 
   return userID;
-}
+};
