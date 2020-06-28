@@ -1,26 +1,6 @@
-import { gql } from 'apollo-server-koa';
+import { gql } from 'apollo-server-lambda';
 
 const mutation = gql`
-  type Mutation {
-    addUser(user: UserInput): User
-    updateUser(id: String, user: UserInput): User
-    deleteUser(id: String): User
-
-    addPet(pet: PetInput): Pet
-    updatePet(id: String, pet: PetInput): Pet
-    deletePet(id: String): Pet
-
-    addPost(post: PostInput): Post
-    updatePost(id: String, post: PostInput): Post
-    deletePost(id: String): Post
-
-    addHospital(hospital: HospitalInput): Hospital
-    updateHospital(id: String, hospital: HospitalInput): Hospital
-    deleteHospital(id: String): Hospital
-
-    signup(user: UserInput): AuthPayload
-    login(id: String!, password: String!): AuthPayload   
-  }
 `;
 
 export {

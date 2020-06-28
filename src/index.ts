@@ -1,9 +1,21 @@
-import app from './app';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server started with GraphQL at http://localhost:${process.env.PORT}/graphql`);
+import { ApolloServer } from 'apollo-server-lambda';
+import { typeDefs } from './typeDefs';
+import { resolvers } from './resolvers';
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
 });
 
-app.on('error', (err: Error) => {
-  console.error(err);
+const handler = server.createHandler({
+  cors: {
+    origin: '*',
+    methods: 'GET,HEAD,POST,PUT,DELETE',
+    credentials: true,
+  },
 });
+
+export default handler;

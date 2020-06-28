@@ -1,11 +1,7 @@
-import { userResolvers } from './userResolvers';
-import { petResolvers } from './petResolvers';
-import { postResolvers } from './postResolvers';
-import { hospitalResolvers } from './hospitalResolvers';
-import { authResolvers } from './authResolvers';
+import { resolver } from './resolver';
 
-const resolvers = [userResolvers, petResolvers, postResolvers, hospitalResolvers, authResolvers];
+const resolvers = [resolver];
 
 export {
-  resolvers,
+    resolvers,
 };
