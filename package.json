@@ -3,41 +3,34 @@
   "version": "1.0.0",
   "main": "src/index.ts",
   "repository": "https://github.com/Unperknown/Bow-Wow-Backend.git",
-  "author": "Unperknown <wnsdud105@gmail.com>",
+  "author": "Unperknown <unperknown.icloud.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Unperknown/Bow-Wow-Backend/issues"
+  },
+  "homepage": "https://github.com/Unperknown/Bow-Wow-Backend#readme",
+  "dependencies": {
+    "apollo-server-lambda": "^2.15.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "graphql": "^14.2.1",
+    "lodash": "^4.17.15",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3",
+    "winston": "^3.3.3"
+  },
   "devDependencies": {
-    "@types/jsonwebtoken": "^8.3.8",
-    "@types/koa-morgan": "^1.0.4",
-    "@types/koa-router": "^7.4.0",
-    "@types/mocha": "^7.0.2",
-    "@types/mongoose": "^5.7.6",
-    "@types/supertest": "^2.0.8",
+    "@types/node": "^14.0.14",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
     "eslint": "^6.8.0",
-    "jsonwebtoken": "^8.5.1",
-    "mocha": "^7.1.1",
-    "prettier": "^2.0.1"
-  },
-  "dependencies": {
-    "@koa/cors": "^3.0.0",
-    "apollo-server-koa": "^2.11.0",
-    "dotenv": "^8.2.0",
-    "koa": "^2.11.0",
-    "koa-bodyparser": "^4.2.1",
-    "koa-morgan": "^1.0.1",
-    "koa-router": "^8.0.8",
-    "ts-node": "^8.6.2",
-    "typeorm": "^0.2.24",
-    "typescript": "^3.8.3"
+    "prettier": "^2.0.1",
+    "serverless": "^1.74.0",
+    "serverless-offline": "^6.4.0"
   },
   "scripts": {
-    "start": "tsc && cross-env NODE_ENV=production node dist/bin/www.js",
-    "build": "tsc -p tsconfig.json",
-    "test": "mocha -r ts-node/register test/**/*.test.ts --watch",
-    "dev": "nodemon --watch 'src/**/*' -e ts,tsx --exec ts-node ./src/index.ts",
+    "start": "sls start",
+    "dev": "nodemon src/index.ts",
     "lint": "eslint --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\""
   }
 }
