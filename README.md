@@ -7,7 +7,7 @@
 
 # Backend for Bow-Wow 🐶🐱🐦
 
-반려동물을 관리하는 PWA 애플리케이션 Bow-Wow의 백엔드 부분입니다. GraphQL 기반의 Koa 서버로 작동합니다.
+반려동물을 관리하는 PWA 애플리케이션 Bow-Wow의 백엔드 부분입니다.
 
 ## 🔑 기술 스택
 
@@ -23,7 +23,7 @@
 <img src="https://symbols.getvecta.com/stencil_6/7_aws-appsync.68531de524.svg" width="200" height="200">
 <img src="https://media.vlpt.us/post-images/leejh3224/31985a40-ce6f-11e8-a94c-6b1202df0fb5/AWS-Lambda.png" width="200" height="200">
 <img src="https://cdn.worldvectorlogo.com/logos/aws-dynamodb.svg" width="200" height="200">
-<img src="https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png" width="200" height="190">
+<img src="https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png" width="200" height="200">
 
 ## 👪 기여자
 
