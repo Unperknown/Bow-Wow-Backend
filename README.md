@@ -1,9 +1,9 @@
 ![Contributor](https://img.shields.io/badge/contributor-Unperknown,winkpsj0529-blue.svg)
-![HitCount](http://hits.dwyl.io/Unperknown/Bow-Wow.svg)
-![Github top language](https://img.shields.io/github/languages/top/Unperknown/Bow-Wow)
-![Bitbucket open issues](https://img.shields.io/github/issues/Unperknown/Bow-Wow)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/Unperknown/Bow-Wow)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Unperknown/Bow-wow)
+![HitCount](http://hits.dwyl.io/Unperknown/Bow-Wow-Backend.svg)
+![Github top language](https://img.shields.io/github/languages/top/Unperknown/Bow-Wow-Backend)
+![Bitbucket open issues](https://img.shields.io/github/issues/Unperknown/Bow-Wow-Backend)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/Unperknown/Bow-Wow-Backend)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Unperknown/Bow-Wow-Backend)
 
 # Backend for Bow-Wow 🐶🐱🐦
 
