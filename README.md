@@ -13,7 +13,7 @@
 
 ### 메인
 
-<img src="https://raw.githubusercontent.com/koajs/koa/HEAD/docs/logo.png" width="200" height="200" />
+<img src="https://pluspng.com/img-png/nodejs-png-nodejs-icon-png-50-px-1600.png" width="200" height="200" />
 <img src="https://litslink.com/media/1/apollo-graphql.svg" width="200" height="200" />
 
 ### 배포
