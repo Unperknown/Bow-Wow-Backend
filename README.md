@@ -9,19 +9,31 @@
 
 반려동물을 관리하는 PWA 애플리케이션 Bow-Wow의 백엔드 부분입니다. GraphQL 기반의 Koa 서버로 작동합니다.
 
-## 👪 Contributor
+## 🔑 기술 스택
+
+### 메인
+
+<img src="https://raw.githubusercontent.com/koajs/koa/HEAD/docs/logo.png" width="200" height="200" />
+<img src="https://litslink.com/media/1/apollo-graphql.svg" width="200" height="200" />
+
+### 배포
+
+#### AWS
+
+<img src="https://symbols.getvecta.com/stencil_6/7_aws-appsync.68531de524.svg" width="200" height="200">
+<img src="https://media.vlpt.us/post-images/leejh3224/31985a40-ce6f-11e8-a94c-6b1202df0fb5/AWS-Lambda.png" width="200" height="200">
+<img src="https://cdn.worldvectorlogo.com/logos/aws-dynamodb.svg" width="200" height="200">
+<img src="https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png" width="200" height="190">
+
+## 👪 기여자
 
 이 저장소에 대해 더 좋은 방향으로 기여할 수 있으면 언제든지 Issue 및 Pull Request를 열어주세요!
 
-### Development II
+### 개발 II
 
 - [🔗Unperknown](https://github.com/Unperknown) : PWA 전반(웹사이트 개발)
 
-## 🔑 Tech Stack
+## 📅 마일스톤
 
-<img src="https://raw.githubusercontent.com/koajs/koa/HEAD/docs/logo.png" width="200" height="200" />
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/1024px-GraphQL_Logo.svg.png" width="200" height="200">
-<img src="https://www.nginx.com/wp-content/uploads/2018/08/NGINX-logo-rgb-large.png" width="200" height="80" />
-<img src="https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png" width="200" height="190">
-
-## [📈 Daily Progress](/doc/daily_progress.md)
+### 6/28 - 개발 착수
+### 7/28 - 1차 배포 마무리
