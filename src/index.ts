@@ -1,13 +1,11 @@
-import * as dotenv from 'dotenv';
-dotenv.config();
-
 import { ApolloServer } from 'apollo-server-lambda';
 import { typeDefs } from './typeDefs';
 import { resolvers } from './resolvers';
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+const server: ApolloServer = new ApolloServer({
+  typeDefs: typeDefs,
+  resolvers: resolvers,
+  mockEntireSchema: true,
 });
 
 const handler = server.createHandler({
@@ -18,4 +16,6 @@ const handler = server.createHandler({
   },
 });
 
-export default handler;
+export {
+  handler,
+};
