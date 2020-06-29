@@ -1,0 +1,27 @@
+service: bow-wow-backend
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-typescript
+  - serverless-bundle
+  - serverless-dotenv-plugin
+
+package:
+  individually: true
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: ap-southeast-1
+
+functions:
+  graphql:
+    handler: src/index.handler
+    events:
+      - http:
+          path: /graphql
+          method: GET
+      - http:
+          path: /graphql
+          method: POST

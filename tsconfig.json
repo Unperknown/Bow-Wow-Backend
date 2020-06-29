@@ -12,7 +12,8 @@
     },
     "sourceMap": true,
     "typeRoots": ["/node_modules/@types", "/@types"],
-    "pretty": true
+    "pretty": true,
+    "esModuleInterop": true,
   },
   "include": [
     "src/**/*"
