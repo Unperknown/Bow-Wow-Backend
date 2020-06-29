@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
-    "experimentalDecorators": true,
-    "module": "commonjs",
+    "module": "es6",
     "target": "es2020",
     "noImplicitAny": true,
     "moduleResolution": "node",
     "outDir": "./dist",
     "baseUrl": ".",
     "paths" : {
-      "*": ["src/*"]
+      "*": ["src/*"],
     },
     "sourceMap": true,
     "typeRoots": ["/node_modules/@types", "/@types"],

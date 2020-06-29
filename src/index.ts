@@ -1,5 +1,5 @@
 import { ApolloServer } from 'apollo-server-lambda';
-import Schema from './schema';
+import { Schema } from './schema';
 
 const server = new ApolloServer({
   schema: Schema,
