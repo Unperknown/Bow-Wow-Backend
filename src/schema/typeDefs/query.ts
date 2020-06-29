@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-lambda';
 
 const query = gql`
-  extend type Query {
+  type Query {
     pet(pid: String): Pet
     pets: [Pet]
   }
@@ -9,4 +9,4 @@ const query = gql`
 
 export {
   query,
-}
+};

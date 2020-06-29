@@ -5,7 +5,7 @@ const server = new ApolloServer({
   schema: Schema,
   mockEntireSchema: true,
   playground: {
-    endpoint: "/dev/graphql"
+    endpoint: '/dev/graphql'
   },
 });
 
