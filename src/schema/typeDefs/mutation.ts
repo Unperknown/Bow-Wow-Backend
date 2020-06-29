@@ -1,9 +1,11 @@
 import { gql } from 'apollo-server-lambda';
 
 const mutation = gql`
-  type Mutation {
+  extend type Mutation {
     createPet(input: PetInput): Pet
   }
 `;
 
-export { mutation };
+export {
+  mutation,
+}

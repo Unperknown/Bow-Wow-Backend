@@ -1,11 +1,12 @@
 import { ApolloServer } from 'apollo-server-lambda';
-import { typeDefs } from './typeDefs';
-import { resolvers } from './resolvers';
+import Schema from './schema';
 
-const server: ApolloServer = new ApolloServer({
-  typeDefs: typeDefs,
-  resolvers: resolvers,
+const server = new ApolloServer({
+  schema: Schema,
   mockEntireSchema: true,
+  playground: {
+    endpoint: "/dev/graphql"
+  },
 });
 
 const handler = server.createHandler({

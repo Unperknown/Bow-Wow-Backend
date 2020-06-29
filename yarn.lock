@@ -1433,9 +1433,9 @@
     shortid "^2.2.14"
 
 "@serverless/components@^2.31.4":
-  version "2.31.4"
-  resolved "https://registry.yarnpkg.com/@serverless/components/-/components-2.31.4.tgz#4a4c2af85d75c2e2a384b155f9ad6bf3ecfad485"
-  integrity sha512-aXdEK6dF3AuLmwNwTepmPW0o41QIPUmEG3P4ZNj0x0wixJuREhGZarwHlWsqgqjakZ2oRXraQ2RhuVmRijky3g==
+  version "2.31.5"
+  resolved "https://registry.yarnpkg.com/@serverless/components/-/components-2.31.5.tgz#17e80ff893b4e6f0245073ed6256fde5d44e0ad1"
+  integrity sha512-x+tejM0bt6SbKvoIVdCkwOPSPfmW3KdW7CP6y6jnAamdfEHrItpDIbnQzsh+ukBFaFd70RrELKI7MNEnHKzGfQ==
   dependencies:
     "@serverless/inquirer" "^1.1.2"
     "@serverless/platform-client" "^1.0.0"
