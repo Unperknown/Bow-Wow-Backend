@@ -7,6 +7,4 @@ const Schema = makeExecutableSchema({
   resolvers,
 });
 
-export {
-  Schema,
-};
+export { Schema };
