@@ -7,7 +7,7 @@
     "outDir": "./dist",
     "baseUrl": ".",
     "paths" : {
-      "*": ["src/*"],
+      "*": ["*"],
     },
     "sourceMap": true,
     "typeRoots": ["/node_modules/@types", "/@types"],
@@ -15,7 +15,7 @@
     "esModuleInterop": true,
   },
   "include": [
-    "src/**/*"
+    "handler.ts"
   ],
   "exclude": [
     "node_modules",
