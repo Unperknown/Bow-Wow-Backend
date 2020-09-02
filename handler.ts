@@ -1,27 +1,23 @@
-import { ApolloServer } from 'apollo-server-lambda';
-import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
-import { schema } from './schema';
+import { dynamoDB, inputs } from './lib';
+import { response } from './middlewares';
 
-const server = new ApolloServer({
-  schema: schema,
-  mockEntireSchema: true,
-  playground: {
-    endpoint: '/graphql'
-  },
-});
+// TO-DO: APIGatewayEvent interface 재정의
+const graphql = response(
+  async (event: any) => {
+    const functions: String = event.function;
+    const data = JSON.parse(event.body);
 
-const handler = server.createHandler({
-  cors: {
-    origin: '*',
-    methods: 'GET,HEAD,POST,PUT,DELETE',
-    credentials: true,
-  },
-});
+    let input;
 
-const graphql = (event: APIGatewayEvent, context: Context, callback: Callback) => {
-  return handler(event, context, callback);
-};
+    // TO-DO: Controller로 분리
+    if (functions == 'createUser') {
+      input = inputs.createUserItemInput(data);
+    }
 
-export {
-  graphql,
-};
+    await dynamoDB.put(input);
+
+    return input.Item;
+  }
+);
+
+export { graphql };
