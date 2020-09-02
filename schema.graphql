@@ -1,78 +1,96 @@
-schema {
-  query: Query
-  mutation: Mutation
-  subscription: Subscription
+type Alarm {
+	id: ID!
+	pet: Pet!
+	time: AWSDateTime
 }
 
 type Coordinate {
-  lat: Float!
-  lng: Float!
+	lat: Float!
+	lng: Float!
 }
 
-type User {
-  uid: ID!
-  name: String!
-  nickname: String
-  id: String!
-  password: String!
-  profile: String
-  location: Coordinate
-}
-
-type Pet {
-  id: ID!
-  owner: User!
-  name: String
-  age: Int
-  weight: Float
-  profile: String
-}
-
-type Alarm {
-  id: ID!
-  pet: Pet!
-  time: DateTime
-}
-
-type Post {
-  id: ID!
-  user: User!
-  pictures: [String]
-  description: String!
-  likes: [User]
-}
-
-type Hospital {
-  id: ID!
-  name: String
-  description: String
-  start_time: DateTime
-  end_time: DateTime
-  location: Coordinate
+input CoordinateInput {
+	lat: Float!
+	lng: Float!
 }
 
 type Diagnosis {
-  id: ID!
-  pet: Pet!
-  start_time: DateTime!
-  end_time: DateTime!
+	id: ID!
+	pet: Pet!
+	start_time: AWSDateTime!
+	end_time: AWSDateTime!
+}
+
+type Hospital {
+	id: ID!
+	name: String
+	description: String
+	start_time: AWSDateTime
+	end_time: AWSDateTime
+	location: Coordinate
 }
 
 type Mutation {
-  createPet(name: String!, age: Int, weight: Float, profile: String): Pet
-  createPost(description: String, pictures: [String]): Post
-  createAlarm(petId: ID!, time: DateTime): Alarm
-  createDiagnosis(petId: ID!, startTime: DateTime!, endTime: DateTime!): Diagnosis
+	createUser(
+		name: String!
+		nickname: String
+		id: String!
+		password: String!
+		profile: String
+		location: Coordinate
+	): User
+	createPet(
+		name: String!,
+		age: Int,
+		weight: Float,
+		profile: String
+	): Pet
+	createPost(description: String, pictures: [String]): Post
+	createAlarm(petId: ID!, time: AWSDateTime): Alarm
+	createDiagnosis(petId: ID!, startTime: AWSDateTime!, endTime: AWSDateTime!): Diagnosis
+}
+
+type Pet {
+	id: ID!
+	owner: User!
+	name: String
+	age: Int
+	weight: Float
+	profile: String
+}
+
+type Post {
+	id: ID!
+	user: User!
+	pictures: [String]
+	description: String!
+	likes: [User]
 }
 
 type Query {
-  me: User
-  myPets: [Pet]
-  hospitals(coordinate: Coordinate!): [Hospital]
-  diagnosis(petId: ID!): [Diagnosis]
+	me: User
+	myPets: [Pet]
+	hospitals(coordinate: CoordinateInput!): [Hospital]
+	diagnosis(petId: ID!): [Diagnosis]
 }
 
 type Subscription {
-  subscribeToNewPet(petId: ID!): Pet
-    @aws_subscribe(mutations:["createPet"])
+	subscribeToNewPet(petId: ID!): Pet
+		@aws_subscribe(mutations: ["createPet"])
+}
+
+type User {
+	uid: ID!
+	name: String!
+	nickname: String
+	id: String!
+	password: String!
+	profile: String
+	location: Coordinate
+}
+
+schema {
+	query: Query
+	mutation: Mutation
+	subscription: Subscription
 }
