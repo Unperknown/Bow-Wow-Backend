@@ -1,10 +1,11 @@
 service: bow-wow-backend
 
 plugins:
-  - serverless-offline
   - serverless-plugin-typescript
   - serverless-bundle
   - serverless-dotenv-plugin
+  - serverless-appsync-plugin
+  - serverless-appsync-offline
 
 package:
   individually: true
@@ -13,17 +14,27 @@ provider:
   name: aws
   runtime: nodejs12.x
   stage: dev
-  region: ap-southeast-1
+  region: SECRET
+
+custom:
+  accountId: SECRET
+  appSync:
+    name: bow-wow-app
+    authenticationType: AMAZON_COGNITO_USER_POOLS
+    schema: schema.graphql
+    userPoolConfig:
+      awsRegion: SECRET
+      defaultAction: ALLOW
+      userPoolId: SECRET
+    dataSources:
+      - type: AMAZON_DYNAMODB
+        name: bw_datas
+        description: 'Bow-Wow Datas'
+        config:
+          tableName: 'bow-wow'
+          serviceRoleArn: SECRET
 
 functions:
   graphql:
     handler: handler.graphql
-    events:
-      - http:
-          path: /graphql
-          method: GET
-          cors: true
-      - http:
-          path: /graphql
-          method: POST
-          cors: true
+
