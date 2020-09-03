@@ -14,7 +14,7 @@ export default (lambda: any) => {
 
     return {
       statusCode,
-      body: JSON.stringify(body),
+      body: JSON.parse(JSON.stringify(body)),
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Credentials': true,
