@@ -1,20 +1,31 @@
 service: bow-wow-backend
 
+package:
+  individually: true
+
 plugins:
   - serverless-plugin-typescript
   - serverless-bundle
   - serverless-dotenv-plugin
   - serverless-appsync-plugin
-  - serverless-appsync-offline
-
-package:
-  individually: true
+  - serverless-offline
 
 provider:
   name: aws
   runtime: nodejs12.x
   stage: dev
   region: ${env:AWS_REGION}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${env:AWS_REGION}:${env:AWS_ACCOUNT_ID}:table/${env:USERS_TABLE}"
 
 custom:
   accountId: ${env:AWS_ACCOUNT_ID}
@@ -32,14 +43,31 @@ custom:
       awsRegion: ${env:AWS_REGION}
       defaultAction: ALLOW
       userPoolId: ${env:AWS_USER_POOL_ID}
+    mappingTemplates:
+      - dataSource: Users
+        type: Query
+        field: createUser
+        request: "createUser-request-mapping-template.txt"
+        response: "createUser-response-mapping-template.txt"
+      - dataSource: Users
+        type: Query
+        field: createPet
+        request: "createPet-request-mapping-template.txt"
+        response: "createPet-response-mapping-template.txt"
     dataSources:
       - type: AMAZON_DYNAMODB
-        name: bw_datas
-        description: 'Bow-Wow Datas'
+        name: Users
+        description: 'User Datas'
         config:
-          tableName: 'bow-wow'
-          serviceRoleArn: ${env:DATASOURCE_SERVICE_ROLE_ARN}
+          tableName: User
+          serviceRoleArn: "arn:aws:dynamodb:${env:AWS_REGION}:${env:AWS_ACCOUNT_ID}:table/${env:USERS_TABLE}"
 
 functions:
-  graphql:
-    handler: handler.graphql
+  handler:
+    handler: handler.main
+    events:
+      - http:
+          path: user
+          method: get
+          cors: true
+          authorizer: aws_iam
