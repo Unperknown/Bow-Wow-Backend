@@ -36,7 +36,7 @@
   },
   "scripts": {
     "start": "sls appsync-offline start",
-    "test": "serverless-bundle test",
+    "test": "serverless-bundle test && validate-schema",
     "lint": "eslint --fix \"**/*.ts\" && prettier --write \"**/*.ts\""
   }
 }
