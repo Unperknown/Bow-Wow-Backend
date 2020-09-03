@@ -18,6 +18,12 @@ provider:
 
 custom:
   accountId: SECRET
+  appsync-offline:
+    port: 62222
+    dynamodb:
+      client:
+        endpoint: "http://localhost:8000"
+        region: localhost
   appSync:
     name: bow-wow-app
     authenticationType: AMAZON_COGNITO_USER_POOLS
@@ -37,4 +43,3 @@ custom:
 functions:
   graphql:
     handler: handler.graphql
-
