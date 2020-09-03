@@ -1,19 +1,49 @@
+import { PutItemInput, UpdateItemInput } from 'aws-sdk/clients/dynamodb';
 import { v4 as uuidv4 } from 'uuid';
 
-const createUserItemInput = (data: any) => {
-  return {
-    TableName: 'bow-wow',
+const createUserItemInput = (payload: any) => {
+  return <PutItemInput>{
+    TableName: process.env.USERS_TABLE ?? 'User',
     Item: {
-      id: uuidv4(),
-      name: data.name,
-      nickname: data.nickname,
-      password: data.password, // TO-DO: 비밀번호 암호화
-      profile: data.profile, // TO-DO: AWS S3 Bucket 연동
-      location: data.location, // TO-DO: Geography 기능 추가
+      uid: uuidv4(),
+      name: payload.arguments.name,
+      nickname: payload.arguments.nickname,
+      id: payload.arguments.id,
+      password: payload.arguments.password, // TO-DO: 비밀번호 암호화
+      profile: payload.arguments.profile, // TO-DO: AWS S3 Bucket 연동
+      location: {
+        // TO-DO: Geography 연동
+        lat: payload.arguments.location.lat,
+        lng: payload.arguments.location.lng,
+      },
     },
+  };
+};
+
+const createPetItemInput = (payload: any) => {
+  return <UpdateItemInput>{
+    TableName: process.env.USERS_TABLE ?? 'User',
+    Key: {
+      uid: payload.identity.sub,
+    },
+    UpdateExpression: 'set #pet = :pet',
+    ExpressionAttributeNames: {
+      '#pet': 'pet',
+    },
+    ExpressionAttributeValues: {
+      ':pet': {
+        id: uuidv4(),
+        name: payload.arguments.name,
+        age: payload.arguments.age,
+        weight: payload.arguments.weight,
+        profile: payload.arguments.profile,
+      }
+    },
+    ReturnValues: 'ALL_NEW',
   };
 };
 
 export default {
   createUserItemInput,
+  createPetItemInput,
 };
