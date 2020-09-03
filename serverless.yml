@@ -14,10 +14,10 @@ provider:
   name: aws
   runtime: nodejs12.x
   stage: dev
-  region: SECRET
+  region: ${env:AWS_REGION}
 
 custom:
-  accountId: SECRET
+  accountId: ${env:AWS_ACCOUNT_ID}
   appsync-offline:
     port: 62222
     dynamodb:
@@ -29,16 +29,16 @@ custom:
     authenticationType: AMAZON_COGNITO_USER_POOLS
     schema: schema.graphql
     userPoolConfig:
-      awsRegion: SECRET
+      awsRegion: ${env:AWS_REGION}
       defaultAction: ALLOW
-      userPoolId: SECRET
+      userPoolId: ${env:AWS_USER_POOL_ID}
     dataSources:
       - type: AMAZON_DYNAMODB
         name: bw_datas
         description: 'Bow-Wow Datas'
         config:
           tableName: 'bow-wow'
-          serviceRoleArn: SECRET
+          serviceRoleArn: ${env:DATASOURCE_SERVICE_ROLE_ARN}
 
 functions:
   graphql:
