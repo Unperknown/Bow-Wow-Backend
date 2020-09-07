@@ -25,7 +25,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:${env:AWS_REGION}:${env:AWS_ACCOUNT_ID}:table/${env:USERS_TABLE}"
+      Resource: "arn:aws:dynamodb:${env:AWS_REGION}:${env:AWS_ACCOUNT_ID}:table/*"
 
 custom:
   accountId: ${env:AWS_ACCOUNT_ID}
@@ -45,15 +45,45 @@ custom:
       userPoolId: ${env:AWS_USER_POOL_ID}
     mappingTemplates:
       - dataSource: Users
-        type: Query
+        type: Mutation
         field: createUser
         request: "createUser-request-mapping-template.txt"
         response: "createUser-response-mapping-template.txt"
       - dataSource: Users
-        type: Query
+        type: Mutation
         field: createPet
         request: "createPet-request-mapping-template.txt"
         response: "createPet-response-mapping-template.txt"
+      - dataSource: Posts
+        type: Mutation
+        field: createPost
+        request: "createPost-request-mapping-template.txt"
+        response: "createPost-response-mapping-template.txt"
+      - dataSource: Users
+        type: Mutation
+        field: createAlarm
+        request: "createAlarm-request-mapping-template.txt"
+        response: "createAlarm-response-mapping-template.txt"
+      - dataSource: Users
+        type: Mutation
+        field: closeUser
+        request: "closeUser-request-mapping-template.txt"
+        response: "closeUser-response-mapping-template.txt"
+      - dataSource: Users
+        type: Mutation
+        field: deletePet
+        request: "deletePet-request-mapping-template.txt"
+        response: "deletePet-response-mapping-template.txt"
+      - dataSource: Posts
+        type: Mutation
+        field: deletePost
+        request: "deletePost-request-mapping-template.txt"
+        response: "deletePost-response-mapping-template.txt"
+      - dataSource: Users
+        type: Mutation
+        field: deleteAlarm
+        request: "deleteAlarm-request-mapping-template.txt"
+        response: "deleteAlarm-response-mapping-template.txt"
     dataSources:
       - type: AMAZON_DYNAMODB
         name: Users
@@ -61,6 +91,18 @@ custom:
         config:
           tableName: User
           serviceRoleArn: "arn:aws:dynamodb:${env:AWS_REGION}:${env:AWS_ACCOUNT_ID}:table/${env:USERS_TABLE}"
+      - type: AMAZON_DYNAMODB
+        name: Posts
+        description: 'Post Datas'
+        config:
+          tableName: Post
+          serviceRoleArn: "arn:aws:dynamodb:${env:AWS_REGION}:${env:AWS_ACCOUNT_ID}:table/${env:POSTS_TABLE}"
+      - type: AMAZON_DYNAMODB
+        name: Hospitals
+        description: 'Hospital Datas'
+        config:
+          tableName: Hospital
+          serviceRoleArn: "arn:aws:dynamodb:${env:AWS_REGION}:${env:AWS_ACCOUNT_ID}:table/${env:HOSPITALS_TABLE}"
 
 functions:
   handler:
