@@ -43,6 +43,39 @@ const createPetItemInput = (payload: any) => {
   };
 };
 
+const createPostItemInput = (payload: any) => {
+  return <PutItemInput>{
+    TableName: process.env.POSTS_TABLE ?? 'Posts',
+    Item: {
+      id: uuidv4(),
+      user: payload.arguments.user,
+      pictures: payload.arguments.picture,
+      description: payload.arguments.description,
+      likes: [],
+    },
+  };
+};
+
+const createAlarmItemInput = (payload: any) => {
+  return <UpdateItemInput>{
+    TableName: process.env.USERS_TABLE ?? 'User',
+    Key: {
+      uid: payload.identity.sub,
+    },
+    UpdateExpression: 'SET #alarm = :alarm',
+    ExpressionAttributeNames: {
+      '#alarm': `pet[${payload.arguments.index}].alarm`,
+    },
+    ExpressionAttributeValues: {
+      ':alarm': [{
+        id: uuidv4(),
+        time: payload.arguments.time,
+      }],
+    },
+    ReturnValues: 'ALL_NEW',
+  };
+};
+
 const closeUserItemInput = (payload: any) => {
   return <DeleteItemInput>{
     TableName: process.env.USERS_TABLE ?? 'User',
@@ -58,14 +91,42 @@ const deletePetItemInput = (payload: any) => {
     Key: {
       uid: payload.identity.sub,
     },
-    UpdateExpression: 'REMOVE pet[0]',
+    UpdateExpression: `REMOVE pet[${payload.arguments.index}]`,
     ReturnValues: 'ALL_NEW',
+    ExpressionAttributeNames: {
+      '#alarm': `pet[${payload.arguments.petIndex}].alarm`,
+    },
+  };
+};
+
+const deleteAlarmItemInput = (payload: any) => {
+  return <UpdateItemInput>{
+    TableName: process.env.USERS_TABLE ?? 'User',
+    Key: {
+      uid: payload.identity.sub,
+    },
+    UpdateExpression: `REMOVE #alarm[${payload.arguments.index}]`,
+
+    ReturnValues: 'ALL_NEW',
+  };
+};
+
+const deletePostItemInput = (payload: any) => {
+  return <DeleteItemInput>{
+    TableName: process.env.POSTS_TABLE ?? 'Posts',
+    Key: {
+      id: payload.identity.sub,
+    },
   };
 };
 
 export default {
   createUserItemInput,
   createPetItemInput,
+  createPostItemInput,
+  createAlarmItemInput,
   closeUserItemInput,
   deletePetItemInput,
+  deletePostItemInput,
+  deleteAlarmItemInput,
 };
