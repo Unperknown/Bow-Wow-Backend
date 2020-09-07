@@ -1,24 +1,20 @@
-type Alarm {
+type User {
+  uid: ID!
+  name: String!
+  nickname: String
+  id: String!
+  password: String!
+  profile: AWSURL
+  location: Coordinate
+  pet: [Pet]
+}
+
+type Post {
   id: ID!
-  pet: Pet!
-  time: AWSDateTime
-}
-
-type Coordinate {
-  lat: Float!
-  lng: Float!
-}
-
-input CoordinateInput {
-  lat: Float!
-  lng: Float!
-}
-
-type Diagnosis {
-  id: ID!
-  pet: Pet!
-  start_time: AWSDateTime!
-  end_time: AWSDateTime!
+  user: User!
+  pictures: [AWSURL]
+  description: String!
+  likes: [User]
 }
 
 type Hospital {
@@ -28,6 +24,21 @@ type Hospital {
   start_time: AWSDateTime
   end_time: AWSDateTime
   location: Coordinate
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type Query {
+  me: User
+  pet(petId: ID!): Pet
+  myPets: [Pet]
+  hospitals(coordinate: CoordinateInput!): [Hospital]
+  diagnosis(petId: ID!): [Diagnosis]
+  alarms(petId: ID!): [Alarm]
 }
 
 type Mutation {
@@ -47,48 +58,48 @@ type Mutation {
     startTime: AWSDateTime!
     endTime: AWSDateTime!
   ): Diagnosis
-}
 
-type Pet {
-  id: ID!
-  owner: User!
-  name: String
-  age: Int
-  weight: Float
-  profile: AWSURL
-}
+  closeUser: User
 
-type Post {
-  id: ID!
-  user: User!
-  pictures: [AWSURL]
-  description: String!
-  likes: [User]
-}
+  deletePet(petId: ID!): Pet
+  deleteAlarm(petId: ID!, alarmId: ID!): Alarm
+  deletePost(id: ID!): Post
 
-type Query {
-  me: User
-  myPets: [Pet]
-  hospitals(coordinate: CoordinateInput!): [Hospital]
-  diagnosis(petId: ID!): [Diagnosis]
+  likePost: Post
+  dislikePost: Post
 }
 
 type Subscription {
   subscribeToNewPet(petId: ID!): Pet @aws_subscribe(mutations: ["createPet"])
 }
 
-type User {
-  uid: ID!
-  name: String!
-  nickname: String
-  id: String!
-  password: String!
+type Pet {
+  id: ID!
+  name: String
+  age: Int
+  weight: Float
   profile: AWSURL
-  location: Coordinate
+  diagnosis: [Diagnosis]
+  alarm: [Alarm]
 }
 
-schema {
-  query: Query
-  mutation: Mutation
-  subscription: Subscription
+type Coordinate {
+  lat: Float!
+  lng: Float!
+}
+
+type Alarm {
+  id: ID!
+  time: AWSDateTime
+}
+
+type Diagnosis {
+  id: ID!
+  start_time: AWSDateTime!
+  end_time: AWSDateTime!
+}
+
+input CoordinateInput {
+  lat: Float!
+  lng: Float!
 }
