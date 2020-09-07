@@ -1,4 +1,4 @@
-import { createUser, createPet } from './mutations';
+import { createUser, createPet, closeUser, deletePet } from './mutations';
 
 const mappedResolverWithRequest = async (payload: any) => {
   let result;
@@ -9,6 +9,12 @@ const mappedResolverWithRequest = async (payload: any) => {
     break;
   case 'createPet':
     result = await createPet(payload);
+    break;
+  case 'closeUser':
+    result = await closeUser(payload);
+    break;
+  case 'deletePet':
+    result = await deletePet(payload);
     break;
   }
 
