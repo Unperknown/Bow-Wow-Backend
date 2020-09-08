@@ -45,45 +45,55 @@ custom:
       userPoolId: ${env:AWS_USER_POOL_ID}
     mappingTemplates:
       - dataSource: Users
+        type: Query
+        field: me
+        request: "me-request-mapping-template.vtl"
+        response: "me-response-mapping-template.vtl"
+      - dataSource: Users
+        type: Query
+        field: myPets
+        request: "myPets-request-mapping-template.vtl"
+        response: "myPets-response-mapping-template.vtl"
+      - dataSource: Users
         type: Mutation
         field: createUser
-        request: "createUser-request-mapping-template.txt"
-        response: "createUser-response-mapping-template.txt"
+        request: "createUser-request-mapping-template.vtl"
+        response: "createUser-response-mapping-template.vtl"
       - dataSource: Users
         type: Mutation
         field: createPet
-        request: "createPet-request-mapping-template.txt"
-        response: "createPet-response-mapping-template.txt"
+        request: "createPet-request-mapping-template.vtl"
+        response: "createPet-response-mapping-template.vtl"
       - dataSource: Posts
         type: Mutation
         field: createPost
-        request: "createPost-request-mapping-template.txt"
-        response: "createPost-response-mapping-template.txt"
+        request: "createPost-request-mapping-template.vtl"
+        response: "createPost-response-mapping-template.vtl"
       - dataSource: Users
         type: Mutation
         field: createAlarm
-        request: "createAlarm-request-mapping-template.txt"
-        response: "createAlarm-response-mapping-template.txt"
+        request: "createAlarm-request-mapping-template.vtl"
+        response: "createAlarm-response-mapping-template.vtl"
       - dataSource: Users
         type: Mutation
         field: closeUser
-        request: "closeUser-request-mapping-template.txt"
-        response: "closeUser-response-mapping-template.txt"
+        request: "closeUser-request-mapping-template.vtl"
+        response: "closeUser-response-mapping-template.vtl"
       - dataSource: Users
         type: Mutation
         field: deletePet
-        request: "deletePet-request-mapping-template.txt"
-        response: "deletePet-response-mapping-template.txt"
+        request: "deletePet-request-mapping-template.vtl"
+        response: "deletePet-response-mapping-template.vtl"
       - dataSource: Posts
         type: Mutation
         field: deletePost
-        request: "deletePost-request-mapping-template.txt"
-        response: "deletePost-response-mapping-template.txt"
+        request: "deletePost-request-mapping-template.vtl"
+        response: "deletePost-response-mapping-template.vtl"
       - dataSource: Users
         type: Mutation
         field: deleteAlarm
-        request: "deleteAlarm-request-mapping-template.txt"
-        response: "deleteAlarm-response-mapping-template.txt"
+        request: "deleteAlarm-request-mapping-template.vtl"
+        response: "deleteAlarm-response-mapping-template.vtl"
     dataSources:
       - type: AMAZON_DYNAMODB
         name: Users
