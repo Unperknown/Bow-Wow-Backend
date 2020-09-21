@@ -119,7 +119,7 @@ functions:
     handler: handler.main
     events:
       - http:
-          path: user
+          path: graphql
           method: get
           cors: true
           authorizer: aws_iam
