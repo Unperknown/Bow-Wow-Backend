@@ -10,7 +10,7 @@
   },
   "homepage": "https://github.com/Unperknown/Bow-Wow-Backend#readme",
   "dependencies": {
-    "aws-sdk": "^2.745.0",
+    "aws-sdk": "^2.814.0",
     "graphql": "^15.3.0",
     "serverless": "^1.81.1",
     "typescript": "^4.0.2"
